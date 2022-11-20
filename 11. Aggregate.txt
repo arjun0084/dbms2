@@ -47,7 +47,7 @@ fees : 40000
 
 db.Student.find({Class:"TE"}).count()
 
-db.Student.aggregate({$match: {Age : {"$gt": 19}}})
+db.Student.aggregate({$match: {Age : {"$gt": 20}}})
 
 db.Student.createIndex({Name:1})
 
