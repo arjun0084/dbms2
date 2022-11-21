@@ -1,56 +1,16 @@
-db.createCollection("Student")
+db.Student.insertMany([ {Name:'', Class:'', Address:'', Age: , Fees: }, {Name:'', Class:'', Address:'', Age: , Fees: } ])
+-- Display student in one class
+db.student.find({Class:"TE"}).count()
 
-db.Student.insertMany([
-{
-Name : "Harsh",
-Class : "TE",
-Address : "Nashik",
-Age : 20 ,
-fees : 10000
-},
-{
-Name : "Kushal",
-Class : "TE",
-Address : "Shirpur",
-Age : 21,
-fees : 50000
-},
-{
-Name : "Rohit",
-Class : "SE",
-Address : "Sangamner",
-Age : 19,
-fees : 20000
-},
-{
-Name : "Deepraj",
-Class : "TE",
-Address : "Dhule",
-Age : 19,
-fees : 50000
-},
-{
-Name : "Shardul",
-Class : "TE",
-Address : "Akola",
-Age : 20,
-fees : 40000
-},
-{
-Name : "Summit",
-Class : "TE",
-Address : "Akola",
-Age : 20,
-fees : 40000
-}
-])
+-- Display 
+db.Student1.aggregate([ {$group: {_id:'$Class',noofstud:{$sum:1}, maxAge:{$max:'$Age'}}} ])
 
-db.Student.find({Class:"TE"}).count()
+--Dispaly the Age greater than 20
+db.Student.aggregate([{$match:{Age:{$gt:20}}}])
 
-db.Student.aggregate({$match: {Age : {"$gt": 20}}})
+-- Sort on the Age
+db.Student.find().sort({Age:-1}).pretty()
 
+-- Display Index
 db.Student.createIndex({Name:1})
 
-db.Student.getIndexes()
-
-db.Student.find().sort({Age:1})
