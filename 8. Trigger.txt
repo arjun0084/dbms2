@@ -27,3 +27,4 @@ select * from library_audit;
 delete from library where book_id=3;
 select * from library_audit;
 
+insert into library values(7,'GG',21);
